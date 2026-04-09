@@ -1,19 +1,12 @@
-# agents/advisor.py
-
-def advisor_agent(risk_data: dict) -> list:
+def advisor_agent(risk_data):
     if risk_data["risk"] == "HIGH":
-        return [
-            "Change all passwords immediately",
-            "Enable 2FA on all accounts",
-            "Check suspicious login activity"
-        ]
+        return ["Change passwords", "Enable 2FA"]
+
     elif risk_data["risk"] == "MEDIUM":
-        return [
-            "Update important passwords",
-            "Enable 2FA where possible"
-        ]
+        return ["Update passwords", "Enable 2FA"]
+
+    elif risk_data["risk"] == "UNKNOWN":
+        return ["Unknown email domain"]
+
     else:
-        return [
-            "Your data looks safe",
-            "Maintain good password hygiene"
-        ]
+        return ["Your data looks safe"]

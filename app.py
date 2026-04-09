@@ -1,46 +1,89 @@
-# app.py
 import streamlit as st
 import json
+import pandas as pd
+
 from main import run_pipeline
+from database import init_db, get_history, login_user, register_user
 
-# Page settings
-st.set_page_config(page_title="Agentic Privacy Analyzer", layout="centered")
+# Initialize database
+init_db()
 
-# Title
-st.markdown("""
-# 🔐 Agentic Digital Footprint Analyzer
-### Protect your online identity with AI agents
-""")
+# Session state
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
 
-st.markdown("---")
+# Sidebar menu
+menu = st.sidebar.selectbox("Menu", ["Login", "Signup"])
 
-# Warning
-st.warning("⚠️ Only analyze emails you own or have permission to check")
+# ---------------- LOGIN / SIGNUP ---------------- #
+if not st.session_state.logged_in:
 
-# Input
-email = st.text_input("Enter your email")
+    if menu == "Login":
+        st.title("🔐 Login")
 
-# Button
+        username = st.text_input("Username")
+        password = st.text_input("Password", type="password")
+
+        if st.button("Login"):
+            if login_user(username, password):
+                st.session_state.logged_in = True
+                st.success("Login Successful")
+                st.rerun()
+            else:
+                st.error("Invalid credentials")
+
+    elif menu == "Signup":
+        st.title("📝 Signup")
+
+        new_user = st.text_input("New Username")
+        new_pass = st.text_input("New Password", type="password")
+
+        if st.button("Register"):
+            if register_user(new_user, new_pass):
+                st.success("User created successfully")
+            else:
+                st.error("Username already exists")
+
+    st.stop()
+
+# ---------------- MAIN APPLICATION ---------------- #
+
+st.title("🔐 Agentic Privacy Analyzer")
+
+# Logout button
+if st.button("Logout"):
+    st.session_state.logged_in = False
+    st.rerun()
+
+email = st.text_input("Enter Email")
+
 if st.button("Analyze"):
-    with st.spinner("Agents are analyzing your data..."):
-        result = run_pipeline(email)
+
+    result = run_pipeline(email)
 
     if "error" in result:
         st.error(result["error"])
+
     else:
         st.success("Analysis Complete")
 
-        # Risk
+        risk = result["risk"]["risk"]
+        score = result["risk"]["score"]
+
         st.subheader("📊 Risk Analysis")
-        st.write(f"**Risk Level:** {result['risk']['risk']}")
-        st.write(f"**Score:** {result['risk']['score']}")
+        st.write(f"**Risk Level:** {risk}")
+        st.write(f"**Score:** {score}")
 
-        # Clean Visualization
+        # Visualization
         st.subheader("📈 Risk Visualization")
-        st.progress(result["risk"]["score"] / 100)
-        st.write(f"Risk Score: {result['risk']['score']} / 100")
 
-        # Breach Data
+        if risk == "UNKNOWN":
+            st.warning("Risk cannot be determined for this email domain")
+        else:
+            st.progress(score / 100)
+            st.write(f"Risk Score: {score} / 100")
+
+        # Breach data
         st.subheader("🔍 Breach Data")
         st.json(result["data"])
 
@@ -55,18 +98,28 @@ if st.button("Analyze"):
             st.write(log)
 
         # Download report
-        report = {
-            "email": email,
-            "risk": result["risk"],
-            "data": result["data"],
-            "advice": result["advice"]
-        }
-
-        report_str = json.dumps(report, indent=2)
+        report = json.dumps(result, indent=2)
 
         st.download_button(
             label="📥 Download Report",
-            data=report_str,
+            data=report,
             file_name="privacy_report.txt",
             mime="text/plain"
         )
+
+# ---------------- DASHBOARD ---------------- #
+
+st.subheader("📊 History Dashboard")
+
+history = get_history()
+
+if history:
+    df = pd.DataFrame(history, columns=["Email", "Risk", "Score"])
+
+    st.dataframe(df)
+
+    st.subheader("📈 Risk Score Distribution")
+    st.bar_chart(df["Score"])
+
+else:
+    st.info("No history available yet.")
