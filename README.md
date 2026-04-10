@@ -125,7 +125,6 @@ GitHub Documentation → https://docs.github.com
 ----------------------------------------------------------------------------------------------------------------------------------
 
 
-Screenshots: Screenshots
 
 🛡 Guardrails Implemented
 Email format validation
