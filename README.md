@@ -1,4 +1,4 @@
-# 🔐 Agentic Privacy Analyzer
+<img width="1920" height="1140" alt="image" src="https://github.com/user-attachments/assets/1f111580-5259-416c-a4c8-f6eb55d09b85" /># 🔐 Agentic Privacy Analyzer
 
 An **Agentic AI-based web application** that analyzes a user's digital footprint and provides **privacy risk assessment and actionable security recommendations**.
 
@@ -115,6 +115,14 @@ pip install -r requirements.txt
 
 Step 4: Run Application
 streamlit run app.py
+
+
+---------------------------------------------------------------------------------------------------------------------------
+
+
+Screenshots--
+
+https://drive.google.com/drive/folders/1l2naRvZeN6UXO2PvmtLX8O--YnbeJOg5?usp=sharing
 
 ---------------------------------------------------------------------------------------------------------------------------
 
