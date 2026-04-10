@@ -1,4 +1,4 @@
-<img width="1920" height="1140" alt="image" src="https://github.com/user-attachments/assets/1f111580-5259-416c-a4c8-f6eb55d09b85" /># 🔐 Agentic Privacy Analyzer
+# 🔐 Agentic Privacy Analyzer
 
 An **Agentic AI-based web application** that analyzes a user's digital footprint and provides **privacy risk assessment and actionable security recommendations**.
 
@@ -15,7 +15,7 @@ This leads to:
 
 👉 Most users **do not know whether their data is exposed or how to respond**.
 
----------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
 
 ## 2️⃣ Possible Solution
 
@@ -27,7 +27,7 @@ A system that can:
 
 This can be achieved using **Agentic AI**, where multiple intelligent agents collaborate to solve the problem.
 
----------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
 
 ## 3️⃣ Implemented Solution
 
@@ -50,7 +50,7 @@ User Input → Data Finder → Risk Analyzer → Advisor → Output
 
 👉 The system is **deterministic** (same input → same output) ensuring reliability.
 
----------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
 
 ## 4️⃣ Tech Stack Used
 
@@ -62,7 +62,7 @@ User Input → Data Finder → Risk Analyzer → Advisor → Output
 | Visualization | Streamlit UI |
 | Version Control | Git + GitHub |
 
----------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
 
 ## 5️⃣ Architecture Diagram
 +-------------------+
@@ -95,8 +95,7 @@ v
 +------------------------+
 
 
-
----------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
 
 ## 6️⃣ How to Run Locally
 
@@ -109,32 +108,21 @@ cd agentic-privacy-analyzer
 Step 2: Create Virtual Environment
 python -m venv venv
 venv\Scripts\activate
-
 Step 3: Install Dependencies
 pip install -r requirements.txt
-
 Step 4: Run Application
 streamlit run app.py
 
 
-
-
----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
 
 7️⃣ References and Resources Used
 Streamlit Documentation → https://docs.streamlit.io
 Python Official Docs → https://docs.python.org
 GitHub Documentation → https://docs.github.com
 
-------------------------------------------------------------------------------------------------------------------------
 
-Problems Faced & Solutions
-Problem	Solution
-Inconsistent results (random output) -->	Replaced with deterministic logic
-Git push errors (rejected) -->	Used git pull --allow-unrelated-histories
-File not visible locally --> Restored project using GitHub clone
-Streamlit UI issues	--> Simplified layout and improved structure
-JSON download not opening	--> Changed format to .txt
+----------------------------------------------------------------------------------------------------------------------------------
 
 🛡 Guardrails Implemented
 Email format validation
@@ -142,7 +130,7 @@ Ethical usage warning
 Deterministic output (no randomness)
 
 
----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
 
 🎯 Use Case
 
@@ -152,7 +140,7 @@ Individuals understand their digital exposure
 Improve cybersecurity awareness
 Demonstrate Agentic AI collaboration
 
----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
 
 🚀 Future Enhancements
 Real API integration (HaveIBeenPwned)
@@ -160,7 +148,7 @@ Authentication system
 Database storage
 Dashboard analytics
 
----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
 
 ⚠️ Disclaimer
 
@@ -168,4 +156,5 @@ This project is for educational purposes only.
 Only analyze data you own or have permission to check.
 
 👨‍💻 Author
+
 Vishnu G
