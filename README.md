@@ -122,7 +122,7 @@ streamlit run app.py
 
 Screenshots--
 
-https://drive.google.com/drive/folders/1l2naRvZeN6UXO2PvmtLX8O--YnbeJOg5?usp=sharing
+--https://drive.google.com/drive/folders/1l2naRvZeN6UXO2PvmtLX8O--YnbeJOg5?usp=sharing
 
 ---------------------------------------------------------------------------------------------------------------------------
 
